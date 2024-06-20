@@ -14,3 +14,9 @@ interface ReportsList {
   score: RiskScore;
   status: string;
 }
+
+interface PieSlice {
+  label: string;
+  property: string;
+  color: string;
+}

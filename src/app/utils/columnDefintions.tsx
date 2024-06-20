@@ -45,3 +45,31 @@ export const columnDefinitions: Column[] = [
     property: "status",
   },
 ];
+
+export const pieChartDefinitions: PieSlice[] = [
+  {
+    label: "Approved",
+    property: "approved",
+    color: "rgba(139, 194, 75, 1)",
+  },
+  {
+    label: "Rejected",
+    property: "rejected",
+    color: "rgba(255, 152, 0, 1)",
+  },
+  {
+    label: "Cancelled",
+    property: "cancelled",
+    color: "rgba(255, 87, 33, 1)",
+  },
+  {
+    label: "Ready for Review",
+    property: "ready",
+    color: "rgba(246, 245, 0, 1)",
+  },
+  {
+    label: "In Progress",
+    property: "review",
+    color: "rgba(0, 168, 244, 1)",
+  },
+];
