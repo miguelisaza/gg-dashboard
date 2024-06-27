@@ -32,7 +32,7 @@ const PieChart = ({
     labels: pieChartDefinitions.map((s) => s.label),
     datasets: [
       {
-        data: pieChartDefinitions.map((s) => data[s.property]),
+        data: pieChartDefinitions.map((s) => data[s.label]),
         backgroundColor: pieChartDefinitions.map((s) => s.color),
         borderColor: pieChartDefinitions.map((s) => s.color),
         borderWidth: 1,

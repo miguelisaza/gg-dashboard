@@ -2,13 +2,20 @@
 
 import PieChart from "./Components/PieChart";
 import Table from "./Components/Table";
+import { countStatusOccurrences } from "./utils";
 import {
   columnDefinitions,
   pieChartDefinitions,
 } from "./utils/columnDefintions";
-import { data, pieData } from "./utils/mockData";
+import { data, pieData, apiData } from "./utils/mockData";
 
 const Dashboard = () => {
+  const getStatusAggregations = () => {
+    const statuses = apiData.items.map((item) => item.statusName);
+    const aggregations = countStatusOccurrences(statuses);
+    return aggregations;
+  };
+
   return (
     <main className="flex flex-col max-w-[1260px] m-auto p-6 lg:px-20 lg:py-12">
       <h1 className="text-2xl font-bold mb-3">Dashboard</h1>
@@ -19,12 +26,12 @@ const Dashboard = () => {
               KYC Application Reports
             </h2>
             <PieChart
-              data={pieData}
+              data={getStatusAggregations()}
               pieChartDefinitions={pieChartDefinitions}
             />
           </div>
           <div className="flex-auto">
-            <Table columns={columnDefinitions} rows={data} />
+            <Table columns={columnDefinitions} rows={apiData.items} />
           </div>
         </div>
       </div>

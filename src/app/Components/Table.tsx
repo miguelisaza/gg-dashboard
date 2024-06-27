@@ -2,19 +2,21 @@
 
 import React from "react";
 
-const Table = ({
-  columns,
-  rows,
-}: {
-  columns: Column[];
-  rows: ReportsList[];
-}) => {
+const Table = ({ columns, rows }: { columns: Column[]; rows: Item[] }) => {
   const getCellValues = (row: { [x: string]: any }): any[] => {
     return columns.map((column) => {
-      if (column.cell && typeof column.cell === "function") {
-        return column.cell(row[column.property], row);
+      let columnValue = row[column.property];
+
+      // custom value getter
+      if (column.valueGetter && typeof column.valueGetter === "function") {
+        columnValue = column.valueGetter(row);
       }
-      return row[column.property];
+
+      // custom cell render
+      if (column.cell && typeof column.cell === "function") {
+        return column.cell(columnValue, row);
+      }
+      return columnValue;
     });
   };
 
