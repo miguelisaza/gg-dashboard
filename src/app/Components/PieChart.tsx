@@ -7,7 +7,6 @@ import {
   Tooltip,
   Legend,
   PluginChartOptions,
-  ChartData,
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 

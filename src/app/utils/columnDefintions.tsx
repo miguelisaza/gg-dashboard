@@ -3,9 +3,9 @@ import { getItemAttributesByLabel } from ".";
 export const columnDefinitions: Column[] = [
   {
     headerName: "Created",
-    property: "timestamp",
-    cell: (_, row: Item) => {
-      const createdDate = new Date(row.createdAt);
+    property: "createdAt",
+    cell: (value) => {
+      const createdDate = new Date(value);
       return (
         <div>
           <p className="text-sm">
@@ -30,25 +30,10 @@ export const columnDefinitions: Column[] = [
   {
     headerName: "Name",
     property: "name",
-    cell: (_, row: Item) => {
-      const firstName = getItemAttributesByLabel(
-        row.attributes,
-        "First name"
-      ) as string;
-      const middleName = getItemAttributesByLabel(
-        row.attributes,
-        "Middle name"
-      ) as string;
-      const lastName = getItemAttributesByLabel(
-        row.attributes,
-        "Last name"
-      ) as string;
-
-      const email = getItemAttributesByLabel(row.attributes, "Email") as string;
-
+    cell: (_, { fullName, email }) => {
       return (
         <div>
-          <p className="text-sm">{`${firstName} ${middleName} ${lastName}`}</p>
+          <p className="text-sm">{fullName}</p>
           <p className="text-xs text-gray-400">{email}</p>
         </div>
       );
@@ -60,11 +45,9 @@ export const columnDefinitions: Column[] = [
   },
   {
     headerName: "Risk Score",
-    property: "score",
-    cell: (_, row: Item) => {
-      const risk = row.riskScoring.currentCategory;
-
-      return risk ?? "Not Calculated";
+    property: "riskScore",
+    cell: (riskScore) => {
+      return riskScore ?? "Not Calculated";
     },
   },
   {

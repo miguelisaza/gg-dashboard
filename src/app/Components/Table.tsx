@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 const Table = ({ columns, rows }: { columns: Column[]; rows: Item[] }) => {
