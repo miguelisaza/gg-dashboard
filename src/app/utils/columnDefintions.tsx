@@ -1,4 +1,5 @@
-import { getItemAttributesByLabel } from ".";
+import RiskScoreBadge from "../Components/RiskScoreBadge";
+import StatusBadge from "../Components/StatusBadge";
 
 export const columnDefinitions: Column[] = [
   {
@@ -41,40 +42,47 @@ export const columnDefinitions: Column[] = [
   },
   {
     headerName: "Type",
+    headerClassName: "text-center",
     property: "type",
+    cell: (type) => {
+      return <p className="text-sm text-center">{type ?? "-"}</p>;
+    },
   },
   {
     headerName: "Risk Score",
     property: "riskScore",
     cell: (riskScore) => {
-      return riskScore ?? "Not Calculated";
+      return <RiskScoreBadge status={riskScore ?? "Not Calculated"} />;
     },
   },
   {
     headerName: "Status",
     property: "statusName",
+    cell: (statusName) => {
+      return <StatusBadge status={statusName} />;
+    },
   },
 ];
 
 export const pieChartDefinitions: PieSlice[] = [
   {
     label: "Approved",
-    color: "rgba(139, 194, 75, 1)",
+    color: "#4ade80",
   },
   {
     label: "Rejected",
-    color: "rgba(255, 152, 0, 1)",
+    color: "#f87171",
   },
   {
     label: "Cancelled",
-    color: "rgba(255, 87, 33, 1)",
+    color: "#a8a29e",
   },
   {
     label: "Ready For Review",
-    color: "rgba(246, 245, 0, 1)",
+    color: "#d8b4fe",
   },
   {
     label: "In Progress",
-    color: "rgba(0, 168, 244, 1)",
+    color: "#60a5fa",
   },
 ];

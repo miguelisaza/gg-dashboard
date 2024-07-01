@@ -1,6 +1,7 @@
 // Table Column Types
 interface Column {
   headerName: string;
+  headerClassName?: string;
   property: string;
   valueGetter?: (row: any) => any;
   cell?: (value, row: any) => ReactNode;

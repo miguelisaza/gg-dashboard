@@ -21,9 +21,11 @@ const Table = ({ columns, rows }: { columns: Column[]; rows: Item[] }) => {
   return (
     <table className="flex flex-col border rounded">
       <thead>
-        <tr className="flex">
+        <tr className="flex border-b pl-2 py-2 gap-0.5">
           {columns.map((col, ci) => (
-            <th className="flex-1 text-left border-b p-2" key={ci}>
+            <th
+              className={`flex-1 text-left ${col.headerClassName ?? ""}`}
+              key={ci}>
               {col.headerName}
             </th>
           ))}
@@ -32,9 +34,9 @@ const Table = ({ columns, rows }: { columns: Column[]; rows: Item[] }) => {
       <tbody>
         {rows.map((row, ri) => {
           return (
-            <tr key={ri} className="flex border-b">
+            <tr key={ri} className="flex border-b pl-2 py-2">
               {getCellValues(row).map((cell, ci) => (
-                <td className="flex-1 p-2" key={ci}>
+                <td className="flex-1" key={ci}>
                   {cell}
                 </td>
               ))}

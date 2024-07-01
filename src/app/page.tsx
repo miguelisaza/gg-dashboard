@@ -5,17 +5,12 @@ import {
   pieChartDefinitions,
 } from "./utils/columnDefintions";
 
-import TableSkeleton from "./Components/Skeletons/Table";
-import PieChartSkeleton from "./Components/Skeletons/PieChart";
-
 const Dashboard = async () => {
   const fetchInfo = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL as string, {
-      cache: "no-store",
-    });
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL as string);
+
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error("Failed to fetch data");
+      throw new Error("Failed to Load Dashboard");
     }
     return res.json();
   };
