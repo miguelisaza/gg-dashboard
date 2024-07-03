@@ -1,13 +1,27 @@
+import Filters from "./Components/Filters";
 import PieChart from "./Components/PieChart";
 import Table from "./Components/Table";
 import {
   columnDefinitions,
   pieChartDefinitions,
 } from "./utils/columnDefintions";
+import { KYCStatusesEnum } from "./utils/enums";
 
-const Dashboard = async () => {
+type FilterSearchParams = { status?: keyof typeof KYCStatusesEnum };
+
+const Dashboard = async ({
+  searchParams,
+}: {
+  searchParams: FilterSearchParams;
+}) => {
+  const activeStatus = searchParams.status;
+
   const fetchInfo = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL as string);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL as string}${
+        activeStatus ? `?status=${activeStatus}` : ""
+      }`
+    );
 
     if (!res.ok) {
       throw new Error("Failed to Load Dashboard");
@@ -28,6 +42,7 @@ const Dashboard = async () => {
         />
       </div>
       <div className="flex-auto">
+        <Filters activeStatus={activeStatus} />
         <Table columns={columnDefinitions} rows={newData.data} />
       </div>
     </>

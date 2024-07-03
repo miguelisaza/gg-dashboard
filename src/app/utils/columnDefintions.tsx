@@ -1,5 +1,6 @@
 import RiskScoreBadge from "../Components/RiskScoreBadge";
 import StatusBadge from "../Components/StatusBadge";
+import { KYCStatusesEnum } from "./enums";
 
 export const columnDefinitions: Column[] = [
   {
@@ -66,23 +67,23 @@ export const columnDefinitions: Column[] = [
 
 export const pieChartDefinitions: PieSlice[] = [
   {
-    label: "Approved",
+    label: KYCStatusesEnum["approved"],
     color: "#4ade80",
   },
   {
-    label: "Rejected",
+    label: KYCStatusesEnum["rejected"],
     color: "#f87171",
   },
   {
-    label: "Cancelled",
+    label: KYCStatusesEnum["cancelled"],
     color: "#a8a29e",
   },
   {
-    label: "Ready For Review",
+    label: KYCStatusesEnum["review"],
     color: "#d8b4fe",
   },
   {
-    label: "In Progress",
+    label: KYCStatusesEnum["progress"],
     color: "#60a5fa",
   },
 ];
