@@ -2,7 +2,8 @@
 
 Welcome to GG Dashboard! This project is a quick setup of a Next.js application integrated with Tailwind CSS for styling and Chart.js for data visualization.
 
-<img width="1131" alt="image" src="https://github.com/miguelisaza/gg-dashboard/assets/18253315/710d7788-668a-4183-b221-7f6bf28576a8">
+<img width="1147" alt="image" src="https://github.com/miguelisaza/gg-dashboard/assets/18253315/645f7445-2c9b-4ae3-b6c6-682caaf2a41d">
+
 
 
 ## Table of Contents
