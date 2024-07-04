@@ -19,32 +19,39 @@ const Table = ({ columns, rows }: { columns: Column[]; rows: Item[] }) => {
   };
 
   return (
-    <table className="flex flex-col border rounded">
-      <thead>
-        <tr className="flex border-b pl-2 py-2 gap-0.5">
-          {columns.map((col, ci) => (
-            <th
-              className={`flex-1 text-left ${col.headerClassName ?? ""}`}
-              key={ci}>
-              {col.headerName}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((row, ri) => {
-          return (
-            <tr key={ri} className="flex border-b pl-2 py-2">
-              {getCellValues(row).map((cell, ci) => (
-                <td className="flex-1" key={ci}>
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <>
+      <table className="flex flex-col border rounded">
+        <thead>
+          <tr className="flex border-b pl-2 py-2 gap-0.5">
+            {columns.map((col, ci) => (
+              <th
+                className={`flex-1 text-left ${col.headerClassName ?? ""}`}
+                key={ci}>
+                {col.headerName}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, ri) => {
+            return (
+              <tr key={ri} className="flex border-b pl-2 py-2">
+                {getCellValues(row).map((cell, ci) => (
+                  <td className="flex-1" key={ci}>
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {rows.length === 0 && (
+        <h2 className="text-center text-lg p-5 mx-auto border border-t-0 m-[-2px]">
+          No Applications found matching the filtering criteria.
+        </h2>
+      )}
+    </>
   );
 };
 
